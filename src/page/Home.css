@@ -1,0 +1,6 @@
+.home-footer {
+	display: flex;
+	border:hsl(from color h s l);
+	background-color: aqua;
+	height: 400px;
+}

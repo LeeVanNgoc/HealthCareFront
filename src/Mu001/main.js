@@ -1,128 +1,197 @@
-import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
+import React, { useState } from 'react';
+import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import Toolbar from '@mui/material/Toolbar';
-import CssBaseline from '@mui/material/CssBaseline';
-import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
+import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import { styled } from '@mui/material/styles';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import Snackbar from '@mui/material/Snackbar';
+import Fade from '@mui/material/Fade';
+import Slide from '@mui/material/Slide';
+import { Typography } from '@mui/material';
 
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(2),
+  border: '2px solid black',
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+  height: 300,
+  width:300,
+  margin: 20
+}));
+const services = [
+  <Item>Item 1</Item>,
+  <Item>Item 2</Item>,
+  <Item>Item 3</Item>,
+  <Item>Item 4</Item>,
+  <Item>Item 5</Item> ,
+  <Item>Item 6</Item>,
+  <Item>Item 7</Item>,
+  <Item>Item 8</Item>,
+  <Item>Item 9</Item>,
+  <Item>Item 10</Item>,
+]
 
-import { Main, AppBar, Item, DrawerHeader, drawerWidth, heights} from './style'; 
-import Masonry from './style';
-import {HealthContent1, HealthContent2, HealthContent3, HealthContent4, HealthContent5, HealthContent6 } from './component';
-
+function SlideTransition(props) {
+  return <Slide {...props} direction="up" />;
+}
 
 export default function UserManager001() {
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+    const [currentIndex, setCurrentIndex] = useState(0);
   
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
+    const handlePrev = () => {
+      setCurrentIndex(prevIndex => Math.max(prevIndex - 1, 0));
+    };
+  
+    const handleNext = () => {
+      setCurrentIndex(prevIndex => Math.min(prevIndex + 1, services.length - 3));
+    };
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-
+    const [state, setState] = React.useState({
+      open: false,
+      Transition: Fade,
+    });
+  
+    const handleClick = (Transition) => () => {
+      setState({
+        open: true,
+        Transition,
+      });
+    };
+  
+    const handleClose = () => {
+      setState({
+        ...state,
+        open: false,
+      });
+    };
+  
+  
   return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar position="fixed" open={open}>
-        <Toolbar>
-          <Typography variant="h6" noWrap sx={{ flexGrow: 1 }} component="div">
-            About Us
-          </Typography>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="end"
-            onClick={handleDrawerOpen}
-            sx={{ ...(open && { display: 'none' }) }}
+    <div className='user001'>
+      <div className='user001-container'>
+        <div className='user001-header'>
+          <Box component="img" src="https://cdn.bookingcare.vn/fo/w1920/2023/11/02/113503-dich-vu-cham-soc-suc-khoe-tai-nha.png" alt="Sample Image" sx={{ margin: '0 20px' }} />
+        </div>
+        <div className='user001-body'>
+        <Box sx={{width:'100%', justifyContent:'center', alignItems: 'center', position: 'relative'}}>
+          <Box sx={{display: 'flex', justifyContent: 'space-between', padding: '20px 200px 0 200px'}}>
+            <Typography variant="h6" fontSize={24}>Dịch vụ tại nhà</Typography>
+            <Button onClick={handleClick(SlideTransition)}>Xem thêm</Button>
+            <Snackbar
+              open={state.open}
+              onClose={handleClose}
+              TransitionComponent={state.Transition}
+              message="I love snacks"
+              key={state.Transition.name}
+              autoHideDuration={1200}
+            />
+          </Box>
+          <Box sx={{display: 'flex', justifyContent:'center', alignItems: 'center', position: 'relative'}}>
+          <IconButton 
+            onClick={handlePrev} 
+            disabled={currentIndex === 0}
           >
-            <MenuIcon />
+            <ArrowBackIosNewIcon />
           </IconButton>
-        </Toolbar>
-      </AppBar>
-      <Main open={open}>
-        <DrawerHeader />
-        <Box sx={{ width: 1500, minHeight: 393 }}>
-          <Masonry
-            columns={4}
-            spacing={2}
-            defaultHeight={450}
-            defaultColumns={4}
-            defaultSpacing={1}
-            sequential
+            <Grid container sx={{ width: 'max-content', whiteSpace: 'nowrap', overflow: 'hidden'}}>
+              <Grid display="flex">
+              {services.slice(currentIndex, currentIndex + 3).map((service, index) => (
+                <Box key={index} sx={{ width: '33%', textAlign: 'center' }}>
+                  {service}
+                </Box>
+              ))}
+              </Grid>
+            </Grid>            
+          <IconButton 
+            onClick={handleNext} 
+            disabled={currentIndex >= services.length - 3}
           >
-            {heights.map((height, index) => (
-              <Item key={index} sx={{ height }}>
-                {index === 0 && <HealthContent1 />}
-                {index === 1 && <HealthContent2 />}
-                {index === 2 && <HealthContent3 />}
-                {index === 3 && <HealthContent4 />}
-                {index === 4 && <HealthContent5 />}
-                {index === 5 && <HealthContent6 />}
-              </Item>
-            ))}
-          </Masonry>
+            <ArrowForwardIosIcon />
+          </IconButton>
+          </Box>
         </Box>
-      </Main>
-      <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            width: drawerWidth,
-          },
-        }}
-        variant="persistent"
-        anchor="right"
-        open={open}
-      >
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+        <Box sx={{width:'100%', justifyContent:'center', alignItems: 'center', position: 'relative'}}>
+          <Box sx={{display: 'flex', justifyContent: 'space-between', padding: '20px 200px 0 200px'}}>
+            <Button onClick={handleClick(Fade)}>Bác sĩ tại nhà</Button>
+            <Button onClick={handleClick(SlideTransition)}>Xem thêm</Button>
+            <Snackbar
+              open={state.open}
+              onClose={handleClose}
+              TransitionComponent={state.Transition}
+              message="I love snacks"
+              key={state.Transition.name}
+              autoHideDuration={1200}
+            />
+          </Box>
+          <Box sx={{display: 'flex', justifyContent:'center', alignItems: 'center', position: 'relative'}}>
+          <IconButton 
+            onClick={handlePrev} 
+            disabled={currentIndex === 0}
+          >
+            <ArrowBackIosNewIcon />
           </IconButton>
-        </DrawerHeader>
-        <Divider />
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
-    </Box>
+            <Grid container sx={{ width: 'max-content', whiteSpace: 'nowrap', overflow: 'hidden'}}>
+              <Grid display="flex">
+              {services.slice(currentIndex, currentIndex + 3).map((service, index) => (
+                <Box key={index} sx={{ width: '33%', textAlign: 'center' }}>
+                  {service}
+                </Box>
+              ))}
+              </Grid>
+            </Grid>            
+          <IconButton 
+            onClick={handleNext} 
+            disabled={currentIndex >= services.length - 3}
+          >
+            <ArrowForwardIosIcon />
+          </IconButton>
+          </Box>
+        </Box>
+        <Box sx={{width:'100%', justifyContent:'center', alignItems: 'center', position: 'relative'}}>
+          <Box sx={{display: 'flex', justifyContent: 'space-between', padding: '20px 200px 0 200px'}}>
+            <Button onClick={handleClick(Fade)}>Khám từ xa</Button>
+            <Button onClick={handleClick(SlideTransition)}>Xem thêm</Button>
+            <Snackbar
+              open={state.open}
+              onClose={handleClose}
+              TransitionComponent={state.Transition}
+              message="I love snacks"
+              key={state.Transition.name}
+              autoHideDuration={1200}
+            />
+          </Box>
+          <Box sx={{display: 'flex', justifyContent:'center', alignItems: 'center', position: 'relative'}}>
+          <IconButton 
+            onClick={handlePrev} 
+            disabled={currentIndex === 0}
+          >
+            <ArrowBackIosNewIcon />
+          </IconButton>
+            <Grid container sx={{ width: 'max-content', whiteSpace: 'nowrap', overflow: 'hidden'}}>
+              <Grid display="flex">
+              {services.slice(currentIndex, currentIndex + 3).map((service, index) => (
+                <Box key={index} sx={{ width: '33%', textAlign: 'center' }}>
+                  {service}
+                </Box>
+              ))}
+              </Grid>
+            </Grid>            
+          <IconButton 
+            onClick={handleNext} 
+            disabled={currentIndex >= services.length - 3}
+          >
+            <ArrowForwardIosIcon />
+          </IconButton>
+          </Box>
+        </Box>
+        </div>
+      </div>
+      
+    </div>
   );
 }
