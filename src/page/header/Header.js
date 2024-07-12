@@ -170,13 +170,13 @@ function ResponsiveAppBar() {
 							href='/user-manager-002'
 							sx={{ my: 2, color: 'white', display: 'block' }}
 						>
-							Doctor
+							Products
 						</Button>
 						<Button
 							href='/user-manager-003'
 							sx={{ my: 2, color: 'white', display: 'block' }}
 						>
-							Pricing
+							Doctor
 						</Button>
 						<Button
 							href='/user-manager-004'

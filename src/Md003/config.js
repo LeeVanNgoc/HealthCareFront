@@ -8,7 +8,6 @@ export const getAllDoctor = (inputId) => {
 	});
 }
 
-
 export const deleteDoctor = (doctorEmail) => {
   return axios.delete(`/api/delete-doctor`, {
     params: { email: doctorEmail }

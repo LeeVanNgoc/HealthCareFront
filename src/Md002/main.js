@@ -16,8 +16,8 @@ import {Item, Item3} from './style'
 function UserManager002() {
   return (
       <div className='user002'>
-        <div user002-header>
-          
+        <div className='user002-header'>
+          <Box component="img" src="https://cdn.bookingcare.vn/fo/w1920/2023/11/02/113503-dich-vu-cham-soc-suc-khoe-tai-nha.png" alt="Sample Image" sx={{ margin: '0 20px' }} />
         </div>
         <div className='user002-contain'> 
           <div className='user002-introduction'>
@@ -29,7 +29,7 @@ function UserManager002() {
                         <CardMedia
                           sx={{ height: 280 }}
                           image="https://www.shutterstock.com/image-photo/healthcare-medical-staff-concept-portrait-600nw-2281024823.jpg"
-                          title="Omega 3-6-9 JV"
+                          title=" Dr. Alex Maginture"
                         />
                         <CardContent>
                           <Typography gutterBottom variant="h5" component="div" p={0}>
@@ -47,8 +47,8 @@ function UserManager002() {
                       <Typography variant='h5' ml={1}>Alex Maginture</Typography>
                         <Typography variant='h6' ml={2}>Profile</Typography>
                           <Typography variant='body2' ml={3}>
-                            Dr. John Doe is a highly respected and experienced physician specializing in cardiology. <br/>
-                            With over 15 years of medical practice, Dr. Doe has dedicated his career to providing exceptional patient care. <br/>
+                            Dr. Alex Maginture is a highly respected and experienced physician specializing in cardiology. <br/>
+                            With over 15 years of medical practice, Dr. Alex has dedicated his career to providing exceptional patient care. <br/>
                             He earned his medical degree from Harvard Medical School and completed his residency at Massachusetts General Hospital. <br/>
                           </Typography>
                         <Typography variant='h6' ml={2}>Contact</Typography>   
@@ -72,7 +72,7 @@ function UserManager002() {
                         <CardMedia
                           sx={{ height: 280 }}
                           image="https://images.theconversation.com/files/304957/original/file-20191203-66986-im7o5.jpg?ixlib=rb-4.1.0&q=45&auto=format&w=926&fit=clip"
-                          title="Omega 3-6-9 JV"
+                          title="Dr. Marina Yoland"
                         />
                         <CardContent>
                           <Typography gutterBottom variant="h5" component="div" p={0}>
@@ -115,7 +115,7 @@ function UserManager002() {
                         <CardMedia
                           sx={{ height: 280 }}
                           image="https://t3.ftcdn.net/jpg/02/60/04/08/360_F_260040863_fYxB1SnrzgJ9AOkcT0hoe7IEFtsPiHAD.jpg"
-                          title="Omega 3-6-9 JV"
+                          title="Dr. Vector Simavis"
                         />
                         <CardContent>
                           <Typography gutterBottom variant="h5" component="div" p={0}>

@@ -1,28 +1,16 @@
 import React, { useState } from 'react';
-import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import { styled } from '@mui/material/styles';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import Snackbar from '@mui/material/Snackbar';
 import Fade from '@mui/material/Fade';
 import Slide from '@mui/material/Slide';
 import { Typography } from '@mui/material';
+import {Item} from './style'
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(2),
-  border: '2px solid black',
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-  height: 300,
-  width:300,
-  margin: 20
-}));
 const services = [
   <Item>Item 1</Item>,
   <Item>Item 2</Item>,
@@ -52,7 +40,7 @@ export default function UserManager001() {
     };
 
     const [state, setState] = React.useState({
-      open: false,
+      open: false,  
       Transition: Fade,
     });
   
@@ -117,7 +105,7 @@ export default function UserManager001() {
         </Box>
         <Box sx={{width:'100%', justifyContent:'center', alignItems: 'center', position: 'relative'}}>
           <Box sx={{display: 'flex', justifyContent: 'space-between', padding: '20px 200px 0 200px'}}>
-            <Button onClick={handleClick(Fade)}>Bác sĩ tại nhà</Button>
+          <Typography variant="h6" fontSize={24}>Dịch vụ cơ sở</Typography>
             <Button onClick={handleClick(SlideTransition)}>Xem thêm</Button>
             <Snackbar
               open={state.open}
@@ -154,7 +142,7 @@ export default function UserManager001() {
         </Box>
         <Box sx={{width:'100%', justifyContent:'center', alignItems: 'center', position: 'relative'}}>
           <Box sx={{display: 'flex', justifyContent: 'space-between', padding: '20px 200px 0 200px'}}>
-            <Button onClick={handleClick(Fade)}>Khám từ xa</Button>
+          <Typography variant="h6" fontSize={24}>Khám từ xa</Typography>
             <Button onClick={handleClick(SlideTransition)}>Xem thêm</Button>
             <Snackbar
               open={state.open}
