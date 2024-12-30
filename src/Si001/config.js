@@ -1,8 +1,13 @@
 import axios from '../axios'
 
 const handleLoginApi = (userEmail, userPassword) => {
-	return axios.post('/api/login-user', {email: userEmail, password: userPassword})
+	const response = axios.post('/api/login-user', null, {
+		params: {
+			email: userEmail, 
+			password: userPassword
+		}
+	})
+	return response
 }
-
 
 export default handleLoginApi;	
