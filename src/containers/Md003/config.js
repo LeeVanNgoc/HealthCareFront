@@ -1,4 +1,4 @@
-import axios from '../axios'
+import axios from '../../axios'
 
 export const getAllDoctor = (inputId) => {
 	return axios.get('/api/get-all-doctor-by-id', {

@@ -1,16 +1,16 @@
 import './AppThread.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './page/Home'
-import HeaderBar from './page/header/Header';
-import Footer from './page/footer/Footer';
-import SignIn from './Si001/main';
-import SignUp from './Su001/main';
-import UserManager001 from './Md001/main';
-import UserManager002 from './Md002/main';
-import UserManager003 from './Md003/main';
-import UserManager004 from './Md004/main';
-import UserManager005 from './Md005/main';
-import HomeProduct from './Hs001/main';
+import Home from './components/page/Home'
+import HeaderBar from './components/page/header/Header';
+import Footer from './components/page/footer/Footer';
+import SignIn from './containers/Si001/main';
+import SignUp from './containers/Su001/main';
+import UserManager001 from './containers/Md001/main';
+import UserManager002 from './containers/Md002/main';
+import UserManager003 from './containers/Md003/main';
+import UserManager004 from './containers/Md004/main';
+import UserManager005 from './containers/Md005/main';
+import HomeProduct from './containers/Hs001/main';
 
 function AppThread() {
   return (
