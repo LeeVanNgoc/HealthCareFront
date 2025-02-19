@@ -5,8 +5,8 @@ import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 
 import './Home.css';
-import HomeProduct from '../Hs001/main';
-import Footer from './footer/Footer';
+import HomeProduct from '../../containers/Hs001/main';
+import Footer from '../page/footer/Footer';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 

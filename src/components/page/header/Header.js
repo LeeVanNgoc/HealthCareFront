@@ -18,7 +18,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import {useNavigate} from 'react-router-dom';
 
 import {Search, SearchIconWrapper, StyledInputBase} from './style';
-import { getIsLogin } from '../../Si001/main';
+import { getIsLogin } from '../../../containers/Si001/main';
 
 	function ResponsiveAppBar() {
 		const navigate = useNavigate();
